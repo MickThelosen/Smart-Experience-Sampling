@@ -1,0 +1,10 @@
+../Drivers/DW1000/DW1000.c:67:20:DW1000_read_reg	24	static,ignoring_inline_asm
+../Drivers/DW1000/DW1000.c:86:20:DW1000_write_reg	24	static
+../Drivers/DW1000/DW1000.c:106:6:DW1000_init	40	static
+../Drivers/DW1000/DW1000.c:219:9:DW1000_config	72	static
+../Drivers/DW1000/DW1000.c:381:17:get_tx_timestamp_u64	72	static
+../Drivers/DW1000/DW1000.c:394:17:get_rx_timestamp_u64	72	static
+../Drivers/DW1000/DW1000.c:407:13:final_msg_set_ts	40	static
+../Drivers/DW1000/DW1000.c:415:13:final_msg_get_ts	24	static
+../Drivers/DW1000/DW1000.c:423:6:DW1000_initiator	80	static
+../Drivers/DW1000/DW1000.c:537:8:DW1000_responder	128	static
