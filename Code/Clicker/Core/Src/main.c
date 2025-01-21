@@ -17,6 +17,8 @@
  */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <stdio.h>
+#include <string.h>
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -143,7 +145,7 @@ int main(void) {
 			sendNewPacket = FALSE;
 			for (current_channel = 0; current_channel < MAX_BEACON_COUNT;
 					current_channel++) {
-				sendData[0] = 0xDD;
+				sendData[0] = 0x1D;
 				HAL_RADIO_SendPacketWithAck(current_channel, TX_WAKEUP_TIME,
 						sendData, receivedData, RX_TIMEOUT_ACK,
 						MAX_LL_PACKET_LENGTH, HAL_RADIO_Callback);
@@ -151,7 +153,7 @@ int main(void) {
 				HAL_RADIO_TIMER_Tick();
 				if (beacon_ID[current_channel] != 0) {
 					DW1000_initiator(&dw1000, current_channel);
-					sendData[0] = 0xD1;
+					sendData[0] = 0xDD;
 					HAL_RADIO_SendPacketWithAck(current_channel,
 					TX_WAKEUP_TIME, sendData, receivedData,
 					RX_TIMEOUT_ACK,
@@ -162,28 +164,41 @@ int main(void) {
 				}
 			}
 			if (beacon_count > 0) {
+				memset(receivedDistanceData, 0, sizeof receivedDistanceData);
 				receivedDistanceData[0] = 0xFF;
-				receivedDistanceData[1] = 10 * beacon_count;
-				for (uint8_t i = 2, j = 0; j + 1 < MAX_BEACON_COUNT; j++) {
+				uint8_t clicker_uuid[8];
+				uint8_t data_size = 10;
+				split_from_uint64(*((uint64_t*) UID64_BASE), clicker_uuid);
+				for (uint8_t k = 2, l = 0; k < 10; k++, l++) {
+					receivedDistanceData[k] = clicker_uuid[l];
+				}
+				for (uint8_t j = 0; j + 1 < MAX_BEACON_COUNT; j++) {
 					if (distance_to_beacon[j] != 0 && beacon_ID[j] != 0) {
 						uint8_t uuid[8];
 						split_from_uint64(beacon_ID[j], uuid);
-						for (uint8_t k = i, l = 0; k < i + 8; k++, l++) {
+						for (uint8_t k = data_size, l = 0; k < data_size + 8;
+								k++, l++) {
 							receivedDistanceData[k] = uuid[l];
 						}
-						receivedDistanceData[i + 8] =
+						receivedDistanceData[data_size + 8] =
 								(uint8_t) distance_to_beacon[j] / 100;
-						receivedDistanceData[i + 9] = distance_to_beacon[j]
-								- (receivedDistanceData[i + 8] * 100);
-						i += 10;
+						receivedDistanceData[data_size + 9] =
+								distance_to_beacon[j]
+										- (receivedDistanceData[data_size + 8]
+												* 100);
+						data_size += 10;
 					}
 				}
+				receivedDistanceData[1] = data_size;
 				HAL_RADIO_SendPacketWithAck(SERVER_CHANNEL,
 				TX_WAKEUP_TIME, receivedDistanceData, receivedData,
 				RX_TIMEOUT_ACK,
 				MAX_LL_PACKET_LENGTH, HAL_RADIO_Callback);
 				HAL_Delay(40);
 				HAL_RADIO_TIMER_Tick();
+				memset(distance_to_beacon, 0, sizeof distance_to_beacon);
+				memset(beacon_ID, 0, sizeof beacon_ID);
+				beacon_count = 0;
 			}
 		}
 		/* USER CODE END WHILE */
@@ -484,14 +499,19 @@ void HAL_RADIO_CallbackRcvOk(RxStats_t *rxPacketStats) {
 				beacon_count++;
 			}
 		}
-	} else if (receivedData[0] == 0xAE) {
-		uint32_t measured_distance = (receivedData[10] * 100)
-				+ receivedData[11];
-		uint32_t distance = measured_distance
-				* (0.5316 + 0.0259 * measured_distance
-						+ -0.0001 * (measured_distance * measured_distance));
-		distance_to_beacon[current_channel] = distance;
+		if (receivedData[10] != 0 || receivedData[11] != 0) {
+			uint32_t measured_distance = (receivedData[10] * 100)
+					+ receivedData[11];
+			uint32_t distance =
+					measured_distance
+							* (0.5316 + 0.0259 * measured_distance
+									+ -0.0001
+											* (measured_distance
+													* measured_distance));
+			distance_to_beacon[current_channel] = distance;
+		}
 	}
+	memset(receivedData, 0, sizeof receivedData);
 }
 
 void HAL_GPIO_EXTI_Callback(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {

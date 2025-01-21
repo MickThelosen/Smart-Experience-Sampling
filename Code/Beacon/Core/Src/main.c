@@ -32,9 +32,8 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
-	/* Beacon Channel (1-39) 0 is reserved */
-	#define BEACON_CHANNEL			(1)
-
+/* Beacon Channel (1-39) 0 is reserved */
+#define BEACON_CHANNEL			(1)
 
 #define MAX_NUM_PACKET          (100)     /* Number of packets used for the test */
 #define TX_WAKEUP_TIME          (400)     /* 400 us */
@@ -147,11 +146,11 @@ int main(void) {
 			uint8_t meters = (uint8_t) distance;
 			uint8_t centimeters = (uint8_t) ((distance - meters) * 100);
 			if (meters != 0 || centimeters != 0) {
-				sendAckData[0] = 0xAE;
 				sendAckData[1] = 10;
 				sendAckData[10] = meters;
 				sendAckData[11] = centimeters;
 				ranging = FALSE;
+				distance = 0;
 			}
 			/* USER CODE END WHILE */
 
@@ -434,7 +433,12 @@ void HAL_RADIO_CallbackTxDone(void) {
 }
 
 void HAL_RADIO_CallbackRcvOk(RxStats_t *rxPacketStats) {
-	ranging = TRUE;
+	if (receivedData[0] == 0x1D) {
+		sendAckData[10] = 0;
+		sendAckData[11] = 0;
+		ranging = TRUE;
+	}
+
 	HAL_RADIO_ReceivePacketWithAck(BEACON_CHANNEL, RX_WAKEUP_TIME, receivedData,
 			sendAckData, RX_TIMEOUT, MAX_LL_PACKET_LENGTH, HAL_RADIO_Callback);
 

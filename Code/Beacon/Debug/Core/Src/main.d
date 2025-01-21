@@ -36,8 +36,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32WB0x_HAL_Driver/Inc/stm32wb0x_hal_spi_ex.h \
  ../Drivers/STM32WB0x_HAL_Driver/Inc/stm32wb0x_hal_uart.h \
  ../Drivers/STM32WB0x_HAL_Driver/Inc/stm32wb0x_hal_uart_ex.h \
- C:/Users/mick/Documents/Github/embedded-clicker/Beacon/Drivers/DW1000/DW1000.h \
- C:/Users/mick/Documents/Github/embedded-clicker/Beacon/Drivers/DW1000/SPI.h \
+ C:/Users/mick/Git-projects/Smart-Experience-Sampling/Code/Beacon/Drivers/DW1000/DW1000.h \
+ C:/Users/mick/Git-projects/Smart-Experience-Sampling/Code/Beacon/Drivers/DW1000/SPI.h \
  ../Drivers/CMSIS/Device/ST/STM32WB0X/Include/stm32wb07.h
 ../Core/Inc/main.h:
 ../Drivers/STM32WB0x_HAL_Driver/Inc/stm32wb0x_hal.h:
@@ -77,6 +77,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32WB0x_HAL_Driver/Inc/stm32wb0x_hal_spi_ex.h:
 ../Drivers/STM32WB0x_HAL_Driver/Inc/stm32wb0x_hal_uart.h:
 ../Drivers/STM32WB0x_HAL_Driver/Inc/stm32wb0x_hal_uart_ex.h:
-C:/Users/mick/Documents/Github/embedded-clicker/Beacon/Drivers/DW1000/DW1000.h:
-C:/Users/mick/Documents/Github/embedded-clicker/Beacon/Drivers/DW1000/SPI.h:
+C:/Users/mick/Git-projects/Smart-Experience-Sampling/Code/Beacon/Drivers/DW1000/DW1000.h:
+C:/Users/mick/Git-projects/Smart-Experience-Sampling/Code/Beacon/Drivers/DW1000/SPI.h:
 ../Drivers/CMSIS/Device/ST/STM32WB0X/Include/stm32wb07.h:

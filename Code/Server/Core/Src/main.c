@@ -146,16 +146,17 @@ int main(void) {
 			uint8_t meters = (uint8_t) distance;
 			uint8_t centimeters = (uint8_t) ((distance - meters) * 100);
 			if (meters != 0 || centimeters != 0) {
-				sendAckData[0] = 0xAE;
 				sendAckData[1] = 10;
 				sendAckData[10] = meters;
 				sendAckData[11] = centimeters;
 				ranging = FALSE;
+				distance = 0;
 			}
 		} else if (printPacket == TRUE) {
 			HAL_UART_Transmit(&huart1, (const uint8_t*) receivedData,
-					strlen(receivedData), 100);
+					receivedData[1], 100);
 			printPacket = FALSE;
+			memset(receivedData, 0, sizeof receivedData);
 		}
 		/* USER CODE END WHILE */
 
@@ -440,11 +441,13 @@ void HAL_RADIO_CallbackTxDone(void) {
 }
 
 void HAL_RADIO_CallbackRcvOk(RxStats_t *rxPacketStats) {
-	if (receivedData[0] == 0xDD) {
+	if (receivedData[0] == 0x1D) {
+		sendAckData[10] = 0;
+		sendAckData[11] = 0;
 		ranging = TRUE;
-	} else if (receivedData[0] == 0xD1) {
-
 	} else if (receivedData[0] == 0xFF) {
+		sendAckData[10] = 0;
+		sendAckData[11] = 0;
 		printPacket = TRUE;
 		ranging = FALSE;
 	}
