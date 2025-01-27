@@ -1,2 +1,0 @@
-../Drivers/DW1000/SPI.c:11:10:SPI_write8	80	static
-../Drivers/DW1000/SPI.c:25:10:SPI_read8	96	static

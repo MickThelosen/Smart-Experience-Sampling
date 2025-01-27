@@ -64,8 +64,8 @@ all: main-build
 main-build: Beacon_Software.elf secondary-outputs
 
 # Tool invocations
-Beacon_Software.elf Beacon_Software.map: $(OBJS) $(USER_OBJS) C:\Users\mick\Git-projects\Smart-Experience-Sampling\Code\Beacon\STM32WB07CCVX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Beacon_Software.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\mick\Git-projects\Smart-Experience-Sampling\Code\Beacon\STM32WB07CCVX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Beacon_Software.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Beacon_Software.elf Beacon_Software.map: $(OBJS) $(USER_OBJS) C:\Users\mick\Documents\Github\embedded-clicker\Beacon\STM32WB07CCVX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Beacon_Software.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\mick\Documents\Github\embedded-clicker\Beacon\STM32WB07CCVX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Beacon_Software.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -3722,6 +3722,12 @@
 		(uuid "0a8efe00-b59f-4df2-8ef1-1ec690c88b67")
 	)
 	(junction
+		(at 85.09 57.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1d752dbb-8c97-41dc-8822-37fdfcc17b40")
+	)
+	(junction
 		(at 67.31 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3892,10 +3898,6 @@
 		(uuid "5bb897b8-8abf-4975-8fbc-7e7b74345589")
 	)
 	(no_connect
-		(at 82.55 57.15)
-		(uuid "64abe73f-b986-48bf-9848-ad7603e5b67f")
-	)
-	(no_connect
 		(at 44.45 88.9)
 		(uuid "66b7cc69-1277-471e-a595-56defba440ad")
 	)
@@ -3906,10 +3908,6 @@
 	(no_connect
 		(at 44.45 93.98)
 		(uuid "d10b367d-f1ec-4bda-8f58-f8415bce6ed5")
-	)
-	(no_connect
-		(at 82.55 59.69)
-		(uuid "f4344886-74dc-4789-893f-f9cb56638d94")
 	)
 	(no_connect
 		(at 82.55 93.98)
@@ -4707,6 +4705,26 @@
 	)
 	(wire
 		(pts
+			(xy 85.09 59.69) (xy 85.09 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "832875aa-c5dd-49b6-8de3-2930d4ee29ef")
+	)
+	(wire
+		(pts
+			(xy 82.55 59.69) (xy 85.09 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84fdfce7-6a39-461c-8ed4-e6c058b8bdb8")
+	)
+	(wire
+		(pts
 			(xy 132.08 100.33) (xy 133.35 100.33)
 		)
 		(stroke
@@ -4917,6 +4935,16 @@
 	)
 	(wire
 		(pts
+			(xy 82.55 57.15) (xy 85.09 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a40152f1-d9ab-44f2-a31b-35c0ad52704d")
+	)
+	(wire
+		(pts
 			(xy 127 182.88) (xy 127 181.61)
 		)
 		(stroke
@@ -4944,6 +4972,16 @@
 			(type default)
 		)
 		(uuid "a83f81a1-d1d0-4764-81fb-d7fbead6d276")
+	)
+	(wire
+		(pts
+			(xy 85.09 57.15) (xy 85.09 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a88d0d83-94d9-4d3a-b496-ca5ac3eb5218")
 	)
 	(wire
 		(pts
@@ -5708,6 +5746,16 @@
 			)
 		)
 		(uuid "26acd176-6bf4-4cc4-a512-7702ce6ee3d9")
+	)
+	(text "These are left floating\nin the V1 PCB!"
+		(exclude_from_sim no)
+		(at 96.52 49.53 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "3dc9b3a9-a084-4199-8fa5-5615231ca64f")
 	)
 	(text "LED"
 		(exclude_from_sim no)
@@ -8500,6 +8548,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3V3")
+		(at 85.09 54.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "676dd9a9-fc10-4c7b-9de7-51c77106055b")
+		(property "Reference" "#PWR09"
+			(at 85.09 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 85.09 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 85.09 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 85.09 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 85.09 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ad0f1178-42a4-4fca-bad5-b9daf5307829")
+		)
+		(instances
+			(project "Clicker_PCB"
+				(path "/74379efc-e377-48e5-ad16-86adc14a8363"
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 120.65 109.22 0)
 		(unit 1)
@@ -10105,7 +10218,7 @@
 				(hide yes)
 			)
 		)
-		(property "mouser" " 198-XTL2024"
+		(property "mouser" "815-ABS07L-32.7-T"
 			(at 160.02 180.34 0)
 			(effects
 				(font

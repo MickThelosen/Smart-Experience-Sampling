@@ -10,9 +10,9 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Drivers/STM32WB0x_HAL_Driver/Src/subdir.mk
--include Drivers/DW1000/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include Core/Inc/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -64,8 +64,8 @@ all: main-build
 main-build: Clicker_Software.elf secondary-outputs
 
 # Tool invocations
-Clicker_Software.elf Clicker_Software.map: $(OBJS) $(USER_OBJS) C:\Users\mick\Git-projects\Smart-Experience-Sampling\Code\Clicker\STM32WB07CCVX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Clicker_Software.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\mick\Git-projects\Smart-Experience-Sampling\Code\Clicker\STM32WB07CCVX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Clicker_Software.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Clicker_Software.elf Clicker_Software.map: $(OBJS) $(USER_OBJS) C:\Users\mick\Documents\Github\embedded-clicker\Clicker\STM32WB07CCVX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Clicker_Software.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\mick\Documents\Github\embedded-clicker\Clicker\STM32WB07CCVX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Clicker_Software.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

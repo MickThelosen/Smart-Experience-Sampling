@@ -1,0 +1,2 @@
+../Core/Inc/SPI.c:11:10:SPI_write8	80	static
+../Core/Inc/SPI.c:25:10:SPI_read8	96	static

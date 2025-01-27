@@ -1,0 +1,9 @@
+../Core/Inc/DW1000.c:415:13:final_msg_get_ts	2
+../Core/Inc/DW1000.c:86:20:DW1000_write_reg	3
+../Core/Inc/DW1000.c:67:20:DW1000_read_reg	2
+../Core/Inc/DW1000.c:381:17:get_tx_timestamp_u64	2
+../Core/Inc/DW1000.c:394:17:get_rx_timestamp_u64	2
+../Core/Inc/DW1000.c:106:6:DW1000_init	4
+../Core/Inc/DW1000.c:219:9:DW1000_config	6
+../Core/Inc/DW1000.c:423:6:DW1000_initiator	11
+../Core/Inc/DW1000.c:537:8:DW1000_responder	12

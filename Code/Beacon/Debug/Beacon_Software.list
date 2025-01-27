@@ -35,25 +35,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS
  15 .ARM.attributes 00000028  00000000  00000000  0000a6a4  2**0
                   CONTENTS, READONLY
- 16 .debug_line   00012197  00000000  00000000  0000a6cc  2**0
+ 16 .debug_line   0001210b  00000000  00000000  0000a6cc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line_str 00000092  00000000  00000000  0001c863  2**0
+ 17 .debug_line_str 000000cf  00000000  00000000  0001c7d7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_info   00012837  00000000  00000000  0001c8f5  2**0
+ 18 .debug_info   00012837  00000000  00000000  0001c8a6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_abbrev 00002a03  00000000  00000000  0002f12c  2**0
+ 19 .debug_abbrev 00002a03  00000000  00000000  0002f0dd  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_aranges 00001100  00000000  00000000  00031b30  2**3
+ 20 .debug_aranges 00001100  00000000  00000000  00031ae0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_str    000b6659  00000000  00000000  00032c30  2**0
+ 21 .debug_str    000b6696  00000000  00000000  00032be0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_rnglists 00000d03  00000000  00000000  000e9289  2**0
+ 22 .debug_rnglists 00000d03  00000000  00000000  000e9276  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .debug_macro  0001bcf3  00000000  00000000  000e9f8c  2**0
+ 23 .debug_macro  0001bcf3  00000000  00000000  000e9f79  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .comment      00000043  00000000  00000000  00105c7f  2**0
+ 24 .comment      00000043  00000000  00000000  00105c6c  2**0
                   CONTENTS, READONLY
- 25 .debug_frame  000040d4  00000000  00000000  00105cc4  2**2
+ 25 .debug_frame  000040d4  00000000  00000000  00105cb0  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -5120,7 +5120,7 @@ int main(void) {
 10042736:	4b31      	ldr	r3, [pc, #196]	@ (100427fc <main+0x190>)
 10042738:	9300      	str	r3, [sp, #0]
 1004273a:	0003      	movs	r3, r0
-1004273c:	2001      	movs	r0, #1
+1004273c:	2002      	movs	r0, #2
 1004273e:	f003 fbf3 	bl	10045f28 <HAL_RADIO_ReceivePacketWithAck>
 	/* USER CODE END 2 */
 
@@ -5136,7 +5136,7 @@ int main(void) {
 1004274c:	d1f9      	bne.n	10042742 <main+0xd6>
 			double distance = DW1000_responder(&dw1000, BEACON_CHANNEL);
 1004274e:	4b23      	ldr	r3, [pc, #140]	@ (100427dc <main+0x170>)
-10042750:	2101      	movs	r1, #1
+10042750:	2102      	movs	r1, #2
 10042752:	0018      	movs	r0, r3
 10042754:	f001 faf4 	bl	10043d40 <DW1000_responder>
 10042758:	0002      	movs	r2, r0
@@ -5871,7 +5871,7 @@ void HAL_RADIO_CallbackRcvError(RxStats_t *rxPacketStats) {
 10042b68:	4b07      	ldr	r3, [pc, #28]	@ (10042b88 <HAL_RADIO_CallbackRcvError+0x38>)
 10042b6a:	9300      	str	r3, [sp, #0]
 10042b6c:	0003      	movs	r3, r0
-10042b6e:	2001      	movs	r0, #1
+10042b6e:	2002      	movs	r0, #2
 10042b70:	f003 f9da 	bl	10045f28 <HAL_RADIO_ReceivePacketWithAck>
 			sendAckData, RX_TIMEOUT, MAX_LL_PACKET_LENGTH, HAL_RADIO_Callback);
 
@@ -5904,7 +5904,7 @@ void HAL_RADIO_CallbackRcvTimeout(RxStats_t *rxPacketStats) {
 10042ba4:	4b07      	ldr	r3, [pc, #28]	@ (10042bc4 <HAL_RADIO_CallbackRcvTimeout+0x38>)
 10042ba6:	9300      	str	r3, [sp, #0]
 10042ba8:	0003      	movs	r3, r0
-10042baa:	2001      	movs	r0, #1
+10042baa:	2002      	movs	r0, #2
 10042bac:	f003 f9bc 	bl	10045f28 <HAL_RADIO_ReceivePacketWithAck>
 			sendAckData, RX_TIMEOUT, MAX_LL_PACKET_LENGTH, HAL_RADIO_Callback);
 }
@@ -5936,7 +5936,7 @@ void HAL_RADIO_CallbackTxDone(void) {
 10042bde:	4b07      	ldr	r3, [pc, #28]	@ (10042bfc <HAL_RADIO_CallbackTxDone+0x34>)
 10042be0:	9300      	str	r3, [sp, #0]
 10042be2:	0003      	movs	r3, r0
-10042be4:	2001      	movs	r0, #1
+10042be4:	2002      	movs	r0, #2
 10042be6:	f003 f99f 	bl	10045f28 <HAL_RADIO_ReceivePacketWithAck>
 			sendAckData, RX_TIMEOUT, MAX_LL_PACKET_LENGTH, HAL_RADIO_Callback);
 
@@ -5987,7 +5987,7 @@ void HAL_RADIO_CallbackRcvOk(RxStats_t *rxPacketStats) {
 10042c32:	4b09      	ldr	r3, [pc, #36]	@ (10042c58 <HAL_RADIO_CallbackRcvOk+0x58>)
 10042c34:	9300      	str	r3, [sp, #0]
 10042c36:	0003      	movs	r3, r0
-10042c38:	2001      	movs	r0, #1
+10042c38:	2002      	movs	r0, #2
 10042c3a:	f003 f975 	bl	10045f28 <HAL_RADIO_ReceivePacketWithAck>
 			sendAckData, RX_TIMEOUT, MAX_LL_PACKET_LENGTH, HAL_RADIO_Callback);
 
@@ -7318,134 +7318,62 @@ __WEAK void CPUcontextRestore(void)
 	...
 
 100432e4 <Reset_Handler>:
-
-	.section  .text.Reset_Handler
-  .weak  Reset_Handler
-  .type  Reset_Handler, %function
-Reset_Handler:  
-   ldr   r0, =_estack
 100432e4:	4810      	ldr	r0, [pc, #64]	@ (10043328 <LoopForever+0x2>)
-   mov   sp, r0          /* set stack pointer */
 100432e6:	4685      	mov	sp, r0
-/* Call the clock system initialization function.*/
-  bl  SystemInit
 100432e8:	f7ff fee2 	bl	100430b0 <SystemInit>
-
-/* Copy the data segment initializers from flash to SRAM */
-  movs  r1, #0
 100432ec:	2100      	movs	r1, #0
-  b  LoopCopyDataInit
 100432ee:	e003      	b.n	100432f8 <LoopCopyDataInit>
 
 100432f0 <CopyDataInit>:
-
-CopyDataInit:
-  ldr  r3, =_sidata
 100432f0:	4b0e      	ldr	r3, [pc, #56]	@ (1004332c <LoopForever+0x6>)
-  ldr  r3, [r3, r1]
 100432f2:	585b      	ldr	r3, [r3, r1]
-  str  r3, [r0, r1]
 100432f4:	5043      	str	r3, [r0, r1]
-  adds  r1, r1, #4
 100432f6:	3104      	adds	r1, #4
 
 100432f8 <LoopCopyDataInit>:
-
-LoopCopyDataInit:
-  ldr  r0, =_sdata
 100432f8:	480d      	ldr	r0, [pc, #52]	@ (10043330 <LoopForever+0xa>)
-  ldr  r3, =_edata
 100432fa:	4b0e      	ldr	r3, [pc, #56]	@ (10043334 <LoopForever+0xe>)
-  adds  r2, r0, r1
 100432fc:	1842      	adds	r2, r0, r1
-  cmp  r2, r3
 100432fe:	429a      	cmp	r2, r3
-  bcc  CopyDataInit
 10043300:	d3f6      	bcc.n	100432f0 <CopyDataInit>
-  ldr  r2, =_sbss
 10043302:	4a0d      	ldr	r2, [pc, #52]	@ (10043338 <LoopForever+0x12>)
-  b  LoopFillZerobss
 10043304:	e002      	b.n	1004330c <LoopFillZerobss>
 
 10043306 <FillZerobss>:
-
-/* Zero fill the bss segment. */
-FillZerobss:
-  movs  r3, #0
 10043306:	2300      	movs	r3, #0
-  str  r3, [r2]
 10043308:	6013      	str	r3, [r2, #0]
-  adds r2, r2, #4
 1004330a:	3204      	adds	r2, #4
 
 1004330c <LoopFillZerobss>:
-
-LoopFillZerobss:
-  ldr  r3, = _ebss
 1004330c:	4b0b      	ldr	r3, [pc, #44]	@ (1004333c <LoopForever+0x16>)
-  cmp  r2, r3
 1004330e:	429a      	cmp	r2, r3
-  bcc  FillZerobss
 10043310:	d3f9      	bcc.n	10043306 <FillZerobss>
-  ldr  r2, =_sbssblue
 10043312:	4a0b      	ldr	r2, [pc, #44]	@ (10043340 <LoopForever+0x1a>)
-  b  LoopFillZeroBlueRam
 10043314:	e002      	b.n	1004331c <LoopFillZeroBlueRam>
 
 10043316 <FillZerobssram>:
-
-
-FillZerobssram:
-  movs  r3, #0
 10043316:	2300      	movs	r3, #0
-  str  r3, [r2]
 10043318:	6013      	str	r3, [r2, #0]
-  adds r2, r2, #4
 1004331a:	3204      	adds	r2, #4
 
 1004331c <LoopFillZeroBlueRam>:
-
-LoopFillZeroBlueRam:
-  ldr  r3, = _ebssblue
 1004331c:	4b09      	ldr	r3, [pc, #36]	@ (10043344 <LoopForever+0x1e>)
-  cmp  r2, r3
 1004331e:	429a      	cmp	r2, r3
-  bcc  FillZerobssram
 10043320:	d3f9      	bcc.n	10043316 <FillZerobssram>
-
-/* Call the application's entry point.*/
-  bl  main
 10043322:	f7ff f9a3 	bl	1004266c <main>
 
 10043326 <LoopForever>:
-
-LoopForever:
-    b LoopForever
 10043326:	e7fe      	b.n	10043326 <LoopForever>
-   ldr   r0, =_estack
 10043328:	20010000 	.word	0x20010000
-  ldr  r3, =_sidata
 1004332c:	10049210 	.word	0x10049210
-  ldr  r0, =_sdata
 10043330:	20000638 	.word	0x20000638
-  ldr  r3, =_edata
 10043334:	200006a4 	.word	0x200006a4
-  ldr  r2, =_sbss
 10043338:	2000017c 	.word	0x2000017c
-  ldr  r3, = _ebss
 1004333c:	20000638 	.word	0x20000638
-  ldr  r2, =_sbssblue
 10043340:	200000c0 	.word	0x200000c0
-  ldr  r3, = _ebssblue
 10043344:	2000017c 	.word	0x2000017c
 
 10043348 <ADC_IRQHandler>:
- * @retval : None
-*/
-    .section  .text.Default_Handler,"ax",%progbits
-Default_Handler:
-Infinite_Loop:
-  b  Infinite_Loop
 10043348:	e7fe      	b.n	10043348 <ADC_IRQHandler>
 	...
 

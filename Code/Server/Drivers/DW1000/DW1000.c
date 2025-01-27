@@ -690,7 +690,7 @@ double DW1000_responder(DW1000_t *dw1000, uint8_t channel) {
 							/ (Ra + Rb + Da + Db));
 					tof = tof_dtu * DWT_TIME_UNITS;
 					distance = tof * SPEED_OF_LIGHT;
-					distance -= 137.34302980478139;
+					distance -= 137.34302980478139; // distance when beacon and clicker are at 0cm distance
 					return distance;
 				}
 			} else {

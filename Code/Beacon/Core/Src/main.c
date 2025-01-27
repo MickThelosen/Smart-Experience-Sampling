@@ -33,7 +33,7 @@
 /* USER CODE BEGIN PD */
 
 /* Beacon Channel (1-39) 0 is reserved */
-#define BEACON_CHANNEL			(1)
+#define BEACON_CHANNEL			(2)
 
 #define MAX_NUM_PACKET          (100)     /* Number of packets used for the test */
 #define TX_WAKEUP_TIME          (400)     /* 400 us */

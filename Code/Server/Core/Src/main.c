@@ -153,8 +153,9 @@ int main(void) {
 				distance = 0;
 			}
 		} else if (printPacket == TRUE) {
+			receivedData[receivedData[1]] = 0xFE;
 			HAL_UART_Transmit(&huart1, (const uint8_t*) receivedData,
-					receivedData[1], 100);
+					receivedData[1] + 1, 100);
 			printPacket = FALSE;
 			memset(receivedData, 0, sizeof receivedData);
 		}

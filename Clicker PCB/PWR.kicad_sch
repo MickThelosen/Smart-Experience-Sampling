@@ -4738,7 +4738,7 @@
 				(hide yes)
 			)
 		)
-		(property "mouser" " 504-PTS18126V125"
+		(property "mouser" "504-PTS18126V260"
 			(at 33.02 35.56 0)
 			(effects
 				(font
